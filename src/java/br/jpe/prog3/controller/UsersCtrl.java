@@ -1,6 +1,11 @@
 package br.jpe.prog3.controller;
 
+import br.jpe.prog3.core.EntityManager;
+import br.jpe.prog3.core.Query;
 import br.jpe.prog3.core.SimpleServlet;
+import br.jpe.prog3.model.User;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +28,18 @@ public class UsersCtrl extends SimpleServlet {
      */
     @Override
     public void get(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
-        forward("users/index.jsp", req, resp);
+        Map map = newMap();
+        map.put("users", getUsers());
+        forward("users/index.jsp", req, resp, map);
+    }
+
+    /**
+     * Get users on database
+     *
+     * @return List
+     */
+    private List<User> getUsers() {
+        return EntityManager.query(new Query("SELECT * FROM Usuarios"), User.class);
     }
 
 }

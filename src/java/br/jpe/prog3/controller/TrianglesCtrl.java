@@ -27,7 +27,7 @@ public class TrianglesCtrl extends SimpleServlet {
         String co = req.getParameter("tri-co");
         String h = req.getParameter("tri-hi");
         // Adds the responses
-        Map<String, String> map = newMap();
+        Map<String, Object> map = newMap();
         map.put("catetoAdjascente", ca);
         map.put("catetoOposto", co);
         map.put("hipotenusa", h);

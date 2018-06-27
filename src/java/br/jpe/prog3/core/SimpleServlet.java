@@ -70,7 +70,7 @@ public abstract class SimpleServlet extends HttpServlet {
      * @param map
      * @throws ServletException
      */
-    public final void forward(String where, HttpServletRequest req, HttpServletResponse resp, Map<String, String> map) throws ServletException {
+    public final void forward(String where, HttpServletRequest req, HttpServletResponse resp, Map<String, Object> map) throws ServletException {
         // Adds parameters
         addDefaultParametersToRequest(req);
         if (map != null && !map.isEmpty()) {
@@ -90,7 +90,7 @@ public abstract class SimpleServlet extends HttpServlet {
      *
      * @return Map
      */
-    public final Map<String, String> newMap() {
+    public final Map<String, Object> newMap() {
         return new HashMap<>();
     }
 
@@ -116,6 +116,7 @@ public abstract class SimpleServlet extends HttpServlet {
     private void addDefaultParametersToRequest(HttpServletRequest request) {
         request.setAttribute("basePath", "/JavaWebProg3");
     }
+    
 //******----------------------------------------------***//
 //****** Servlet methods *****//
 //******----------------------------------------------***//
