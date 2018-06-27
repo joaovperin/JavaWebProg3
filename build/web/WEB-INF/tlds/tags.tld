@@ -23,5 +23,11 @@
         <name>content</name>
         <path>/WEB-INF/tags/content.tag</path>
     </tag-file>
+    
+    <!-- Messages tag -->
+    <tag-file>
+        <name>messages</name>
+        <path>/WEB-INF/tags/messages.tag</path>
+    </tag-file>
   
 </taglib>

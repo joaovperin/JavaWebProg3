@@ -1,5 +1,6 @@
 <%@tag description="Document tag" pageEncoding="UTF-8"%>
 <%@attribute name="title" required="false" description="View title" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,6 +11,9 @@
         <link rel="stylesheet" type="text/css" href="https://unpkg.com/papercss/dist/paper.min.css">
         <style>
             .center {text-align: center;}
+            input {margin-bottom: 12px;}
+            .msg{color: #1AC03B; font-weight: 300; font-size: 32px;}
+            .error-msg{color: red; font-weight: 300; font-size: 32px;}
         </style>
     </head>
     <body>

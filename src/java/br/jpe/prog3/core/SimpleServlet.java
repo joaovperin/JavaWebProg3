@@ -1,6 +1,8 @@
 package br.jpe.prog3.core;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -56,13 +58,40 @@ public abstract class SimpleServlet extends HttpServlet {
      * @throws ServletException
      */
     public final void forward(String where, HttpServletRequest req, HttpServletResponse resp) throws ServletException {
-        RequestDispatcher rd = req.getServletContext().getRequestDispatcher(normalizePath(where));
+        forward(where, req, resp, null);
+    }
+
+    /**
+     * Forwards to a page (jsp) adding parameters
+     *
+     * @param where
+     * @param req
+     * @param resp
+     * @param map
+     * @throws ServletException
+     */
+    public final void forward(String where, HttpServletRequest req, HttpServletResponse resp, Map<String, String> map) throws ServletException {
+        // Adds parameters
         addDefaultParametersToRequest(req);
+        if (map != null && !map.isEmpty()) {
+            map.forEach(req::setAttribute);
+        }
+        // Sends redirect
+        RequestDispatcher rd = req.getServletContext().getRequestDispatcher(normalizePath(where));
         try {
             rd.forward(req, resp);
         } catch (IOException ex) {
             throw new ServletException(ex);
         }
+    }
+
+    /**
+     * Creates a map
+     *
+     * @return Map
+     */
+    public final Map<String, String> newMap() {
+        return new HashMap<>();
     }
 
     /**
