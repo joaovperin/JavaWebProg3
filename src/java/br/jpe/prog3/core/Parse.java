@@ -17,7 +17,9 @@ import java.util.Date;
 public class Parse {
 
     /** Simple Date Formatter */
-    private final static SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy");
+    private final static SimpleDateFormat SD_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
+    /** Simple Date Parser */
+    private final static SimpleDateFormat SD_PARSE = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     private Parse() {
         throw new IllegalStateException("Cannot be instantiated.");
@@ -32,7 +34,7 @@ public class Parse {
     public static synchronized Date toDate(String date) {
         if (date != null && !date.trim().isEmpty()) {
             try {
-                return SDF.parse(date);
+                return SD_PARSE.parse(date);
             } catch (ParseException e) {
             }
         }
@@ -49,7 +51,7 @@ public class Parse {
         if (date == null) {
             return "";
         }
-        return SDF.format(date);
+        return SD_FORMAT.format(date);
     }
 
 }

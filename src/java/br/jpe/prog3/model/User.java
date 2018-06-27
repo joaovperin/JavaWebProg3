@@ -10,6 +10,7 @@ import br.jpe.prog3.core.Parse;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.Date;
 
 /**
@@ -103,7 +104,12 @@ public class User extends Model<User> {
     @Override
     public void set(PreparedStatement pstm) throws SQLException {
         int i = 1;
-        pstm.setInt(i++, getIdUsuario());
+        // Auto incremeted column
+        if (getIdUsuario() != 0) {
+            pstm.setInt(i++, getIdUsuario());
+        } else {
+            pstm.setNull(i++, Types.INTEGER);
+        }
         pstm.setString(i++, getEndEmail());
         pstm.setDate(i++, getDtInclusao() == null ? null : new java.sql.Date(getDtInclusao().getTime()));
         pstm.setString(i++, getNome());
