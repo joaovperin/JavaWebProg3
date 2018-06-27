@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Index page controller
+ * Triangles page controller
  *
  * @author joaovperin
  */
-@WebServlet("")
-public class IndexCtrl extends SimpleServlet {
+@WebServlet("/triangle")
+public class TrianglesCtrl extends SimpleServlet {
 
     /**
      * Answers to Get responses.
@@ -23,7 +23,7 @@ public class IndexCtrl extends SimpleServlet {
      */
     @Override
     public void get(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
-        forward("index.jsp", req, resp);
+        forward("triangles/index.jsp", req, resp);
     }
 
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.jpe.prog3.core;
 
 import java.io.IOException;
@@ -61,12 +56,36 @@ public abstract class SimpleServlet extends HttpServlet {
      * @throws ServletException
      */
     public final void forward(String where, HttpServletRequest req, HttpServletResponse resp) throws ServletException {
-        RequestDispatcher rd = req.getServletContext().getRequestDispatcher(BASE_JSP + where.replaceFirst("/", ""));
+        RequestDispatcher rd = req.getServletContext().getRequestDispatcher(normalizePath(where));
+        addDefaultParametersToRequest(req);
         try {
             rd.forward(req, resp);
         } catch (IOException ex) {
             throw new ServletException(ex);
         }
+    }
+
+    /**
+     * Normalizes a path
+     *
+     * @param path
+     * @return String
+     */
+    private String normalizePath(String path) {
+        String s = path;
+        if (path.startsWith("/")) {
+            s = path.replaceFirst("/", "");
+        }
+        return BASE_JSP + s;
+    }
+
+    /**
+     * Adds default parameters to request
+     *
+     * @param request
+     */
+    private void addDefaultParametersToRequest(HttpServletRequest request) {
+        request.setAttribute("basePath", "/JavaWebProg3");
     }
 //******----------------------------------------------***//
 //****** Servlet methods *****//

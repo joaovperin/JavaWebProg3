@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Index page controller
+ * Users page controller
  *
  * @author joaovperin
  */
-@WebServlet("")
-public class IndexCtrl extends SimpleServlet {
+@WebServlet("/users")
+public class UsersCtrl extends SimpleServlet {
 
     /**
      * Answers to Get responses.
@@ -23,7 +23,7 @@ public class IndexCtrl extends SimpleServlet {
      */
     @Override
     public void get(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
-        forward("index.jsp", req, resp);
+        forward("users/index.jsp", req, resp);
     }
 
 }

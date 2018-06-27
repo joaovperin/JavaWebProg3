@@ -2,6 +2,8 @@
 <%@taglib prefix="t" uri="/WEB-INF/tlds/tags.tld"%>
 <t:document>
 
-    <t:content title="Início" />
+    <t:content title="Usuários">
+        Insira algum conteúdo aqui...
+    </t:content>
 
 </t:document>
