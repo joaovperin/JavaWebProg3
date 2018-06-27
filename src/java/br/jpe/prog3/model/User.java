@@ -6,6 +6,7 @@
 package br.jpe.prog3.model;
 
 import br.jpe.prog3.core.Model;
+import br.jpe.prog3.core.Parse;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -83,6 +84,10 @@ public class User extends Model<User> {
         this.dtNascimento = dtNascimento;
     }
 
+    public String fmtDataNascimento() {
+        return Parse.fromDate(getDtNascimento());
+    }
+
     @Override
     public User get(ResultSet rs) throws SQLException {
         int i = 1;
@@ -108,7 +113,7 @@ public class User extends Model<User> {
 
     @Override
     public String sqlPersist() {
-        return "INSERT INTO User VALUES (?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE idUsuario = idUsuario";
+        return "INSERT INTO Usuarios VALUES (?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE idUsuario = idUsuario";
     }
 
 }

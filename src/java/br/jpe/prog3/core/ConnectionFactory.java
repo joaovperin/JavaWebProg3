@@ -18,11 +18,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ConnectionFactory {
 
     /** Databse Connection */
-    private static final String CONN = "jdbc:mysql://CONNECTION_URL:3306/DATABASE_NAME";
+    private static final String CONN = "jdbc:mysql://porto-zoca.cl6eed1myiqo.us-west-2.rds.amazonaws.com:3306/PortoZoca_Dev";
     /** Database Username */
-    private static final String USER = "DATABASE_USERNAME";
+    private static final String USER = "PortoZoca";
     /** Database Password */
-    private static final String PASS = "DATABASE_PASSWORD";
+    private static final String PASS = "PortoZoca1234";
 
     /** Control if already registered */
     private static final AtomicBoolean REGISTERED;
